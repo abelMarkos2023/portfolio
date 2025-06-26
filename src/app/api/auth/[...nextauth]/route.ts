@@ -14,6 +14,7 @@ export const authOptions: AuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
+      //  console.log(credentials);
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Missing email or password');
         }
@@ -21,15 +22,16 @@ export const authOptions: AuthOptions = {
         await connectToDatabase();
 
         const user = await User.findOne({ email: credentials.email });
+        console.log('user', user);
         if (!user) {
           throw new Error('No user found with this email');
         }
 
         const isValid = await bcrypt.compare(
           credentials.password,
-          user.hashedPassword
+          user.password
         );
-
+        console.log(user, isValid);
         if (!isValid) {
           throw new Error('Invalid password');
         }
