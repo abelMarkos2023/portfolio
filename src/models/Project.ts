@@ -20,6 +20,9 @@ const projectSchema = new Schema(
     githubUrl: {
       type: String,
     },
+    technology: {
+      type: String,
+    },
     techStack: [
       {
         type: String,
