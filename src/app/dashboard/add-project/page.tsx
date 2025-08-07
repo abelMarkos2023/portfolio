@@ -2,6 +2,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 
@@ -110,7 +111,7 @@ export default function AddProjectPage() {
               onChange={(e) => e.target.files && handleImageUpload(e.target.files[0])}
               className="w-full p-2 rounded-lg bg-gray-800 border border-gray-700"
             />
-            {imageUrl && <img src={imageUrl} alt="preview" className="mt-3 rounded-lg border border-gray-700" />}
+            {imageUrl && <Image width={200} height={200} src={imageUrl} alt="preview" className="mt-3 rounded-lg border border-gray-700" />}
           </div>
 
           {/* Live URL */}

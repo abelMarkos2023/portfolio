@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import ResumeButton from './ResumeDownloader';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +39,9 @@ export default function Navbar() {
       </motion.h1>
 
       {/* Desktop Links */}
-      <div className="hidden md:flex space-x-8 text-sm font-medium">
+      <div className="hidden md:flex space-x-8 text-sm font-medium items-center">
+       
+        <ResumeButton />
         {links.map((link) => (
           <a
             key={link.name}

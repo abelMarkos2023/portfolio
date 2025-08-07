@@ -1,47 +1,12 @@
-// import { NextResponse } from 'next/server';
-// import { connectToDatabase } from '@/lib/mongodb';
-// import Project from '@/models/Project';
+
 
 // GET all projects
-export async function GET() {
-  await connectToDatabase();
-  const projects = await Project.find().sort({ createdAt: -1 });
-  return NextResponse.json(projects);
-}
 
-// // POST new project
-// export async function POST(request: Request) {
-//   try {
-//     await connectToDatabase();
-//     const body = await request.json();
-
-//     const { title, description, imageUrl, liveDemoUrl, githubUrl, techStack } = body;
-
-//     if (!title || !description || !imageUrl) {
-//       return NextResponse.json({ message: 'Missing required fields.' }, { status: 400 });
-//     }
-
-//     const newProject = await Project.create({
-//       title,
-//       description,
-//       imageUrl,
-//       liveDemoUrl,
-//       githubUrl,
-//       techStack,
-//     });
-
-//     return NextResponse.json(newProject, { status: 201 });
-//   } catch (error) {
-//     console.error('Error creating project:', error);
-//     return NextResponse.json({ message: 'Server error.' }, { status: 500 });
-//   }
-// }
-
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import {connectToDatabase} from "@/lib/mongodb";
 import Project from "@/models/Project";
 
-export async function POST(req: Request) {
+export const POST = async (req: Request) => {
   try {
     await connectToDatabase();
 
@@ -68,3 +33,45 @@ export async function POST(req: Request) {
   }
 }
 
+export async function GET() {
+  await connectToDatabase();
+  const projects = await Project.find().sort({ createdAt: -1 });
+  return NextResponse.json(projects);
+}
+
+// DELETE project by ID
+
+
+// UPDATE project by ID
+export async function PUT(req: NextRequest) {
+  try {
+    await connectToDatabase();
+    const body = await req.json();
+
+    console.log(body);
+
+    const data = {
+      title: body.title,
+      description: body.description,
+      imageUrl: body.imageUrl,
+      liveDemoUrl: body.liveDemoUrl,
+      githubUrl: body.githubUrl,
+      technology: body.technology,
+      techStack: body.techStack,
+    };
+
+    const updatedProject = await Project.findByIdAndUpdate(body.id, data, {
+      new: true, // return the updated document
+      runValidators: true,
+    });
+
+    if (!updatedProject) {
+      return NextResponse.json({ message: "Project not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(updatedProject);
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ message: "Failed to update project" }, { status: 500 });
+  }
+}

@@ -1,6 +1,6 @@
 'use client';
 
-import { Code, Monitor, Image as ImageIcon } from "lucide-react";
+import { Code, Monitor, Shield } from "lucide-react";
 import { motion } from "framer-motion";
 
 const services = [
@@ -15,9 +15,9 @@ const services = [
     desc: "Modern, mobile-friendly websites built with TailwindCSS and Next.js — fast, clean, and scalable.",
   },
   {
-    icon: <ImageIcon size={32} className="text-pink-400" />,
-    title: "Cloud Media Hosting",
-    desc: "Cloud image management, media optimization, and secure image delivery with Cloudinary.",
+    icon: <Shield size={32} className="text-pink-400" />,
+    title: "Mobile Apps and APIs",
+    desc: "Cross-platform apps built with React Native and APIs with Node.js and Express  - secure, fast, and reliable.",
   },
 ];
 

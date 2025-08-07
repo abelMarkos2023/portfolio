@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import RainParticles from '@/components/RainParticles';
 import Languages from './Languages';
+import ResumeModal from './ResumeModal';
 
 export default function Hero() {
   const [rainMode, setRainMode] = useState(true);
@@ -46,7 +47,8 @@ export default function Hero() {
           Full-Stack Developer ⚙️ building bold, scalable, visually sharp apps with <strong className="text-white">Next.js</strong>, <strong className="text-white">MongoDB</strong>, <strong className="text-white">Cloudinary</strong>, and <strong className="text-white">TailwindCSS</strong>.
         </motion.p>
 
-        <motion.a
+       <div className="flex items-center gap-4 justify-center">
+         <motion.a
           href="#projects"
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.98 }}
@@ -55,6 +57,8 @@ export default function Hero() {
         >
           🚀 View My Work
         </motion.a>
+         <ResumeModal />
+       </div>
         <Languages />
       </div>
     </section>
