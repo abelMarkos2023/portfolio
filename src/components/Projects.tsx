@@ -32,7 +32,7 @@ export default function Projects() {
         <h2 className="text-5xl font-extrabold tracking-tight bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
           My Work
         </h2>
-        <p className="text-gray-400 mt-4 max-w-xl mx-auto text-sm">
+        <p className="text-gray-400 mt-4 max-w-xl mx-auto text-lg">
           A selection of apps and websites I’ve crafted with love and caffeine ☕
         </p>
       </div>

@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import SocialBar from "@/components/SocialBar";
 import Services from "@/components/Services";
 import Contact from "@/components/Contact";
-import Projects from "@/components/Projects";
+import Projects2 from "@/components/Projects2";
 
 
 
@@ -26,7 +26,7 @@ export default function HomePage() {
     
      <SocialBar />
       {/* Projects */}
-      <Projects />
+      <Projects2 />
 
       {/* Services */}
      <Services />
